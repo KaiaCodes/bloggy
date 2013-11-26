@@ -1,4 +1,4 @@
-<h1>Listing blogs</h1>
+<h1>List Of Blogs</h1>
 
 <table>
   <thead>
@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Content</th>
       <th># Comments</th>
+      <th>Tags</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +18,12 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
-        <td><%= blog.comments.count %></td>
+        <td><center><%= blog.comments.count %></center></td>
+        <td><% blog.tags.each do |tag| %>
+          <%=tag.name %>
+      <% end %>
+    </td>
+
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +33,4 @@
 </table>
 
 <br>
-
 <%= link_to 'New Blog', new_blog_path %>

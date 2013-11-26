@@ -10,8 +10,20 @@
   <%= @blog.content %>
 </p>
 
+<p>
+	<strong>Tags:</strong>
+	<h4>Associated Tags <%= @blog.tags.count %></h4>
+	<% @blog.tags.each do |tag| %>
+		<span style="background-color:gray;padding:4px;margin-right:4px;color:white">
+		<%= tag.name %>
+	<% end %>
+
+</p>
+
 <hr/>
+<h2>Comments<span style="color:gray"></h2>
 <%= render 'comments/form' %>
+	
 
 <hr/>
 <% @blog.comments.each do |comment| %>
